@@ -16,7 +16,7 @@ namespace Otus.Teaching.PromoCodeFactory.DataAccess.Data
         {
             _dataContext.Database.EnsureDeleted();
             _dataContext.Database.EnsureCreated();
-            
+
             _dataContext.AddRange(FakeDataFactory.Employees);
             _dataContext.SaveChanges();
             
@@ -30,4 +30,5 @@ namespace Otus.Teaching.PromoCodeFactory.DataAccess.Data
             _dataContext.SaveChanges();
         }
     }
+
 }
