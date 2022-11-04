@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Otus.Teaching.PromoCodeFactory.Core.Abstractions.Repositories;
@@ -30,8 +31,8 @@ namespace Otus.Teaching.PromoCodeFactory.WebHost
             services.AddScoped<IDbInitializer, EfDbInitializer>(); 
             services.AddDbContext<DataContext>(x =>
             {
-                x.UseSqlite("Filename=PromoCodeFactoryDb.sqlite");
-                //x.UseNpgsql(Configuration.GetConnectionString("PromoCodeFactoryDb"));
+                //x.UseSqlite("Filename=PromoCodeFactoryDb.sqlite");
+                x.UseNpgsql(Configuration.GetConnectionString("PromoCodeFactoryDb"));
                 x.UseSnakeCaseNamingConvention();
                 x.UseLazyLoadingProxies();
             });
